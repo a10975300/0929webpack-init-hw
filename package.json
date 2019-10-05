@@ -58,6 +58,8 @@
     "write-file-webpack-plugin": "^4.5.1"
   },
   "devDependencies": {
-    "imagemin-webp-webpack-plugin": "^3.2.1"
+    "imagemin-webp-webpack-plugin": "^3.2.1",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10"
   }
 }

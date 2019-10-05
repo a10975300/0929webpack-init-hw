@@ -8,7 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');           //自動產�
 const CopyPlugin = require('copy-webpack-plugin');                  //複製目錄
 const WriteFilePlugin = require('write-file-webpack-plugin');      //執行devServer時輸出檔案
 const SpritesmithPlugin = require('webpack-spritesmith');  
-const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");         //CSS Sprite
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");  
+const VueLoaderPlugin = require('vue-loader/lib/plugin');       //CSS Sprite
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
@@ -22,6 +23,14 @@ module.exports = {
     devtool: 'source-map',
     module: {
         rules: [
+		{
+        test: /\.vue$/,
+        use: [
+                    {
+                        loader: 'vue-loader'
+                    }
+                ]
+      },
             {
                 test: /\.js|jsx$/,
                 exclude: /node_modules/,
@@ -162,6 +171,7 @@ module.exports = {
 			silent: false,
 			strict: true
         }),
+		new VueLoaderPlugin(),
         new WriteFilePlugin()
     ],
     devServer: {
